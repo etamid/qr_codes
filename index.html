@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Generator</title>
+    <meta name="description" content="Generate QR codes for URLs">
+    <meta name="keywords" content="QR code, generator, URL, free, online">
+    <link rel="icon" href="./assets/images/icon.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="./assets/images/icon_white.png" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+    <div class="site-header-wrap">
+        <header class="site-header" aria-label="Primary">
+            <a class="brand" href="./" aria-label="QR Generator home">
+                <img class="brand-logo brand-logo-light" src="./assets/images/full.png" alt="QR Generator logo" width="8192" height="4608">
+                <img class="brand-logo brand-logo-dark" src="./assets/images/white_full.png" alt="QR Generator logo" width="8192" height="4608">
+            </a>
+            <div class="header-controls">
+                <div class="control-group language-switcher" role="group" aria-label="Language switcher">
+                    <button class="control-button" type="button" data-language-option="en">EN</button>
+                    <button class="control-button" type="button" data-language-option="ar">AR</button>
+                </div>
+                <button
+                    class="control-button theme-toggle"
+                    type="button"
+                    data-theme-toggle
+                    data-translation-aria-label="themeToggle"
+                    aria-label="Toggle color theme"
+                >
+                    <span class="theme-toggle-track" aria-hidden="true">
+                        <span class="theme-toggle-thumb"></span>
+                    </span>
+                    <span class="theme-toggle-label" data-theme-label>Light</span>
+                </button>
+            </div>
+        </header>
+        <main class="site-main">
+            
+        </main>
+    </div>
+
+    <noscript>
+        <p>This app works best with JavaScript enabled.</p>
+    </noscript>
+    <script src="./assets/main.js"></script>
+</body>
+</html>
