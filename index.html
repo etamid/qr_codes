@@ -6,12 +6,14 @@
     <title>QR Generator</title>
     <meta name="description" content="Generate QR codes for URLs">
     <meta name="keywords" content="QR code, generator, URL, free, online">
+    
     <link rel="icon" href="./assets/images/icon.png" media="(prefers-color-scheme: light)">
     <link rel="icon" href="./assets/images/icon_white.png" media="(prefers-color-scheme: dark)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <div class="site-header-wrap">
@@ -40,13 +42,337 @@
             </div>
         </header>
         <main class="site-main">
-            
+            <section class="generator-layout" aria-labelledby="generator-heading">
+                <article class="generator-panel generator-panel-form">
+                    <div class="panel-copy">
+                        <p class="panel-kicker" data-translation-key="panelKicker">Live QR generator</p>
+                        <h1 id="generator-heading" class="panel-title" data-translation-key="panelTitle">Create a QR code in seconds</h1>
+                        <p class="panel-description" data-translation-key="panelDescription">Paste a link, tweak the essentials, and download a sharp PNG instantly.</p>
+                    </div>
+
+                    <form class="generator-form" data-generator-form>
+                        <div class="form-section">
+                            <div class="section-heading-row">
+                                <p class="field-label" data-translation-key="contentTypeLabel">Content type</p>
+                                <p class="field-meta" data-translation-key="contentTypeMeta">Live input</p>
+                            </div>
+                            <div class="control-group segmented-group" role="group" aria-label="Content type">
+                                <button class="control-button segmented-button" type="button" data-content-type-option="url">
+                                    <i class="button-icon" data-lucide="globe"></i>
+                                    <span data-translation-key="contentTypeUrl">URL</span>
+                                </button>
+                                <button class="control-button segmented-button" type="button" data-content-type-option="text">
+                                    <i class="button-icon" data-lucide="text"></i>
+                                    <span data-translation-key="contentTypeText">Text</span>
+                                </button>
+                            </div>
+
+                            <div class="content-field-stack">
+                                <div class="content-field-group" data-content-field="url">
+                                    <label class="field-label" for="qr-url" data-translation-key="urlFieldLabel">URL</label>
+                                    <input
+                                        id="qr-url"
+                                        class="text-input"
+                                        type="url"
+                                        inputmode="url"
+                                        dir="ltr"
+                                        autocomplete="off"
+                                        value="https://etamid.com/"
+                                        placeholder="https://etamid.com/"
+                                        data-translation-placeholder="urlPlaceholder"
+                                        data-qr-url-input
+                                    >
+                                </div>
+
+                                <div class="content-field-group" data-content-field="text" hidden>
+                                    <label class="field-label" for="qr-text" data-translation-key="textFieldLabel">Text</label>
+                                    <textarea
+                                        id="qr-text"
+                                        class="text-area"
+                                        rows="5"
+                                        placeholder="Write anything you want to encode"
+                                        data-translation-placeholder="textPlaceholder"
+                                        data-qr-text-input
+                                    ></textarea>
+                                    <div class="field-help-row">
+                                        <p class="field-help" data-translation-key="textCapacityHelp">Text is capped automatically to keep the QR code scannable.</p>
+                                        <p class="field-meta field-counter" data-text-capacity-counter>0 / 1273 bytes</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="field-help" data-translation-key="contentHelp">Changes appear automatically. You do not need to click apply.</p>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="section-heading-row">
+                                <p class="field-label" data-translation-key="downloadSizeLabel">Download size</p>
+                                <p class="field-meta" data-translation-key="downloadSizeMeta">PNG output</p>
+                            </div>
+                            <div class="control-group segmented-group" role="group" aria-label="Download size">
+                                <button class="control-button segmented-button" type="button" data-size-option="512">512</button>
+                                <button class="control-button segmented-button" type="button" data-size-option="1024">1024</button>
+                                <button class="control-button segmented-button" type="button" data-size-option="2048">2048</button>
+                                <button class="control-button segmented-button" type="button" data-size-option="4096">4096</button>
+                                <button class="control-button segmented-button" type="button" data-size-option="8192">8192</button>
+                            </div>
+                        </div>
+
+                        <details class="advanced-panel style-panel">
+                            <summary class="advanced-summary">
+                                <span class="summary-content">
+                                    <i class="button-icon" data-lucide="palette"></i>
+                                    <span data-translation-key="styleToggle">Styles</span>
+                                </span>
+                                <span class="summary-toggle" aria-hidden="true">
+                                    <i class="summary-toggle-icon summary-toggle-icon-plus" data-lucide="plus"></i>
+                                    <i class="summary-toggle-icon summary-toggle-icon-minus" data-lucide="minus"></i>
+                                </span>
+                            </summary>
+                            <div class="advanced-grid compact-grid style-grid">
+                                <div class="advanced-field advanced-field-wide">
+                                    <span class="field-label" data-translation-key="styleLabel">Style preset</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="Style preset">
+                                        <button class="control-button segmented-button" type="button" data-style-option="card" data-translation-key="styleCard">Card</button>
+                                        <button class="control-button segmented-button" type="button" data-style-option="studio" data-translation-key="styleStudio">Studio</button>
+                                        <button class="control-button segmented-button" type="button" data-style-option="stamp" data-translation-key="styleStamp">Stamp</button>
+                                        <button class="control-button segmented-button" type="button" data-style-option="ink" data-translation-key="styleInk">Ink</button>
+                                        <button class="control-button segmented-button" type="button" data-style-option="transparent" data-translation-key="styleTransparent">Transparent</button>
+                                    </div>
+                                </div>
+                                <div class="advanced-field advanced-field-wide">
+                                    <span class="field-label" data-translation-key="qrPatternLabel">QR pattern</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="QR pattern">
+                                        <button class="control-button segmented-button" type="button" data-dot-style-option="square" data-translation-key="dotStyleSquare">Square</button>
+                                        <button class="control-button segmented-button" type="button" data-dot-style-option="rounded" data-translation-key="dotStyleRounded">Rounded</button>
+                                        <button class="control-button segmented-button" type="button" data-dot-style-option="classy" data-translation-key="dotStyleClassy">Classy</button>
+                                        <button class="control-button segmented-button" type="button" data-dot-style-option="extra-rounded" data-translation-key="dotStyleExtraRounded">Extra round</button>
+                                    </div>
+                                </div>
+                                <div class="advanced-field">
+                                    <span class="field-label" data-translation-key="eyeFrameLabel">Eye frame</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="Eye frame">
+                                        <button class="control-button segmented-button" type="button" data-corner-square-style-option="square" data-translation-key="eyeFrameSquare">Square</button>
+                                        <button class="control-button segmented-button" type="button" data-corner-square-style-option="extra-rounded" data-translation-key="eyeFrameRounded">Rounded</button>
+                                    </div>
+                                </div>
+                                <div class="advanced-field">
+                                    <span class="field-label" data-translation-key="eyeCenterLabel">Eye center</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="Eye center">
+                                        <button class="control-button segmented-button" type="button" data-corner-dot-style-option="square" data-translation-key="eyeCenterSquare">Square</button>
+                                        <button class="control-button segmented-button" type="button" data-corner-dot-style-option="dot" data-translation-key="eyeCenterDot">Dot</button>
+                                    </div>
+                                </div>
+                                <div class="advanced-field">
+                                    <label class="field-label" for="qr-frame-color" data-translation-key="frameColorLabel">Frame fill</label>
+                                    <div class="color-input-wrap">
+                                        <input id="qr-frame-color" class="color-input" type="color" value="#ffffff" data-qr-frame-color>
+                                        <span class="color-value" data-frame-color-value>#FFFFFF</span>
+                                    </div>
+                                </div>
+                                <div class="advanced-field">
+                                    <label class="field-label" for="qr-frame-text-color" data-translation-key="frameTextColorLabel">Frame text</label>
+                                    <div class="color-input-wrap">
+                                        <input id="qr-frame-text-color" class="color-input" type="color" value="#171411" data-qr-frame-text-color>
+                                        <span class="color-value" data-frame-text-color-value>#171411</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="advanced-panel details-panel">
+                            <summary class="advanced-summary">
+                                <span class="summary-content">
+                                    <i class="button-icon" data-lucide="scan-text"></i>
+                                    <span data-translation-key="detailsToggle">Optional details</span>
+                                </span>
+                                <span class="summary-toggle" aria-hidden="true">
+                                    <i class="summary-toggle-icon summary-toggle-icon-plus" data-lucide="plus"></i>
+                                    <i class="summary-toggle-icon summary-toggle-icon-minus" data-lucide="minus"></i>
+                                </span>
+                            </summary>
+                            <div class="advanced-grid">
+                                <div class="advanced-field advanced-field-wide">
+                                    <label class="field-label" for="qr-label" data-translation-key="labelFieldLabel">Label</label>
+                                    <input
+                                        id="qr-label"
+                                        class="text-input"
+                                        type="text"
+                                        maxlength="60"
+                                        placeholder="Etamid"
+                                        data-translation-placeholder="labelPlaceholder"
+                                        data-qr-label-input
+                                    >
+                                </div>
+                                <div class="advanced-field advanced-field-wide">
+                                    <label class="field-label" for="qr-description" data-translation-key="descriptionFieldLabel">Description</label>
+                                    <textarea
+                                        id="qr-description"
+                                        class="text-area text-area-small"
+                                        rows="3"
+                                        maxlength="140"
+                                        placeholder="Share this code with anyone instantly"
+                                        data-translation-placeholder="descriptionPlaceholder"
+                                        data-qr-description-input
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="advanced-panel logo-panel">
+                            <summary class="advanced-summary">
+                                <span class="summary-content">
+                                    <i class="button-icon" data-lucide="image-up"></i>
+                                    <span data-translation-key="logoFieldLabel">Logo</span>
+                                </span>
+                                <span class="summary-toggle" aria-hidden="true">
+                                    <i class="summary-toggle-icon summary-toggle-icon-plus" data-lucide="plus"></i>
+                                    <i class="summary-toggle-icon summary-toggle-icon-minus" data-lucide="minus"></i>
+                                </span>
+                            </summary>
+                            <div class="advanced-grid">
+                                <div class="advanced-field advanced-field-wide">
+                                    <span class="field-label" data-translation-key="logoFieldLabel">Logo</span>
+                                    <div class="logo-upload-row">
+                                        <label class="upload-button" for="qr-logo">
+                                            <i class="button-icon" data-lucide="image-plus"></i>
+                                            <span data-translation-key="logoUploadButton">Upload logo</span>
+                                        </label>
+                                        <input id="qr-logo" class="file-input" type="file" accept=".png,.jpg,.jpeg,.webp,.svg" data-qr-logo-input>
+                                        <button class="control-button text-button" type="button" data-clear-logo-button>
+                                            <i class="button-icon" data-lucide="trash-2"></i>
+                                            <span data-translation-key="logoClearButton">Remove</span>
+                                        </button>
+                                    </div>
+                                    <p class="field-help" data-logo-file-name data-translation-key="logoHelp">Optional. A small centered logo usually still scans well.</p>
+                                </div>
+                                <div class="advanced-field advanced-field-wide logo-options" data-logo-options hidden>
+                                    <div class="logo-options-card">
+                                        <p class="field-label" data-translation-key="logoAppearanceLabel">Logo appearance</p>
+                                        <div class="advanced-grid compact-grid">
+                                            <div class="advanced-field">
+                                                <label class="field-label" for="qr-logo-badge-color" data-translation-key="logoBadgeColorLabel">Logo plate</label>
+                                                <div class="color-input-wrap">
+                                                    <input id="qr-logo-badge-color" class="color-input" type="color" value="#ffffff" data-qr-logo-badge-color>
+                                                    <span class="color-value" data-logo-badge-color-value>#FFFFFF</span>
+                                                </div>
+                                            </div>
+                                            <div class="advanced-field">
+                                                <label class="field-label" for="qr-logo-scale" data-translation-key="logoScaleLabel">Logo size</label>
+                                                <div class="range-input-wrap">
+                                                    <input id="qr-logo-scale" class="range-input" type="range" min="16" max="30" step="1" value="22" data-qr-logo-scale>
+                                                    <span class="color-value" data-logo-scale-value>22%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="advanced-panel">
+                            <summary class="advanced-summary">
+                                <span class="summary-content">
+                                    <i class="button-icon" data-lucide="settings-2"></i>
+                                    <span data-translation-key="advancedToggle">Advanced</span>
+                                </span>
+                                <span class="summary-toggle" aria-hidden="true">
+                                    <i class="summary-toggle-icon summary-toggle-icon-plus" data-lucide="plus"></i>
+                                    <i class="summary-toggle-icon summary-toggle-icon-minus" data-lucide="minus"></i>
+                                </span>
+                            </summary>
+                            <div class="advanced-grid">
+                                <div class="advanced-field">
+                                    <label class="field-label" for="qr-dark-color" data-translation-key="foregroundLabel">Foreground</label>
+                                    <div class="color-input-wrap">
+                                        <input id="qr-dark-color" class="color-input" type="color" value="#111111" data-qr-dark-color>
+                                        <span class="color-value" data-dark-color-value>#111111</span>
+                                    </div>
+                                </div>
+                                <div class="advanced-field">
+                                    <label class="field-label" for="qr-light-color" data-translation-key="backgroundLabel">Background</label>
+                                    <div class="color-input-wrap">
+                                        <input id="qr-light-color" class="color-input" type="color" value="#ffffff" data-qr-light-color>
+                                        <span class="color-value" data-light-color-value>#ffffff</span>
+                                    </div>
+                                </div>
+                                <div class="advanced-field advanced-field-wide">
+                                    <span class="field-label" data-translation-key="errorCorrectionLabel">Error correction</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="Error correction">
+                                        <button class="control-button segmented-button" type="button" data-error-level="L">L</button>
+                                        <button class="control-button segmented-button" type="button" data-error-level="M">M</button>
+                                        <button class="control-button segmented-button" type="button" data-error-level="Q">Q</button>
+                                        <button class="control-button segmented-button" type="button" data-error-level="H">H</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </form>
+                </article>
+
+                <article class="generator-panel generator-panel-preview">
+                    <div class="preview-header">
+                        <p class="panel-kicker" data-translation-key="previewKicker">Preview</p>
+                        <p class="preview-size" data-preview-size-label>1024 px PNG</p>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-stage" data-preview-stage>
+                            <div class="preview-output-frame" data-preview-frame data-style="card">
+                                <div class="preview-qr-wrap">
+                                    <div class="qr-canvas" data-qr-preview></div>
+                                    <div class="qr-logo-badge" data-qr-logo-badge hidden>
+                                        <img class="qr-logo-image" alt="" data-qr-logo-image>
+                                    </div>
+                                </div>
+                                <div class="preview-text-block" data-preview-text-block hidden>
+                                    <p class="preview-output-label" data-preview-output-label></p>
+                                    <p class="preview-output-description" data-preview-output-description></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-copy">
+                            <h2 class="preview-title" data-translation-key="previewTitle">Scannable and ready</h2>
+                            <p class="preview-description" data-translation-key="previewDescription">The code updates live as you type and keeps the output crisp for download.</p>
+                        </div>
+                        <div class="action-row preview-action-row">
+                            <div class="preview-action-buttons">
+                                <button class="secondary-button" type="button" data-reset-button>
+                                    <i class="button-icon" data-lucide="rotate-ccw"></i>
+                                    <span data-translation-key="resetButton">Reset</span>
+                                </button>
+                                <button class="download-button" type="button" data-download-button>
+                                    <i class="button-icon" data-lucide="download"></i>
+                                    <span data-translation-key="downloadButton">Download PNG</span>
+                                </button>
+                            </div>
+                            <p class="status-text" data-generator-status data-translation-key="statusReady">Ready</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
         </main>
+
+        <section class="site-outro" aria-labelledby="visit-site-heading">
+            <div class="thanks-card">
+                <p class="panel-kicker" data-translation-key="thanksCardKicker">Thanks for using it</p>
+                <div class="thanks-card-content">
+                    <div class="thanks-copy">
+                        <h2 id="visit-site-heading" class="thanks-title" data-translation-key="thanksCardTitle">Need more projects like this?</h2>
+                        <p class="thanks-description" data-translation-key="thanksCardDescription">We build digital products, tools, and experiences at Etamid. Visit our website to see more.</p>
+                    </div>
+                    <a class="visit-site-link" href="https://etamid.com/" target="_blank" rel="noopener noreferrer">
+                        <span data-translation-key="thanksCardButton">Visit etamid.com</span>
+                        <i class="button-icon" data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <noscript>
         <p>This app works best with JavaScript enabled.</p>
     </noscript>
+    <script src="./assets/qr-code-styling.js"></script>
     <script src="./assets/main.js"></script>
 </body>
 </html>
