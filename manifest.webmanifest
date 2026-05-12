@@ -1,0 +1,28 @@
+{
+  "name": "QR Generator",
+  "short_name": "QR Generator",
+  "description": "Create custom QR codes for URLs or text with live preview, style presets, logo support, and high-resolution PNG downloads.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f1f1f3",
+  "theme_color": "#f1f1f3",
+  "categories": ["productivity", "utilities", "design"],
+  "icons": [
+    {
+      "src": "/assets/images/icon.png",
+      "sizes": "1680x1680",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot.png",
+      "sizes": "1919x1079",
+      "type": "image/png"
+    }
+  ]
+}

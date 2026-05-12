@@ -1,8 +1,11 @@
 const rtlLanguages = ["ar", "fa", "ur"];
 
 const translationTokens = {
-	title: { en: "QR Generator", ar: "منشئ رموز الاستجابة السريعة" },
-	description: { en: "Generate QR codes for URLs", ar: "أنشئ رموز QR للروابط" },
+	title: { en: "Free QR Code Generator | Custom PNG QR Codes", ar: "منشئ QR مجاني | تنزيل رموز QR بصيغة PNG" },
+	description: {
+		en: "Create custom QR codes for URLs or text with live preview, style presets, logo support, and high-resolution PNG downloads.",
+		ar: "أنشئ رموز QR مخصصة للروابط أو النصوص مع معاينة مباشرة وخيارات تصميم وشعار وتنزيل PNG عالي الدقة."
+	},
 	themeToggle: { en: "Toggle color theme", ar: "تبديل مظهر الألوان" },
 	themeLabelLight: { en: "Light", ar: "فاتح" },
 	themeLabelDark: { en: "Dark", ar: "داكن" },
@@ -54,6 +57,7 @@ const translationTokens = {
 	logoAppearanceLabel: { en: "Logo appearance", ar: "مظهر الشعار" },
 	logoBadgeColorLabel: { en: "Logo plate", ar: "خلفية الشعار" },
 	logoScaleLabel: { en: "Logo size", ar: "حجم الشعار" },
+	installApp: { en: "Install app", ar: "تثبيت التطبيق" },
 	advancedToggle: { en: "Advanced", ar: "متقدم" },
 	foregroundLabel: { en: "Foreground", ar: "لون الرمز" },
 	backgroundLabel: { en: "Background", ar: "الخلفية" },
@@ -189,8 +193,13 @@ const generatorState = { ...generatorDefaults };
 const generatorElements = {};
 let renderTimer = null;
 let previewQrCode = null;
+let deferredInstallPrompt = null;
 
 function getDocumentLanguage() {
+	const routeLanguage = document.documentElement.dataset.languageRoute;
+	if (routeLanguage === "ar" || routeLanguage === "en") {
+		return routeLanguage;
+	}
 	const storedLanguage = window.localStorage.getItem(storageKeys.language);
 	if (storedLanguage === "ar" || storedLanguage === "en") {
 		return storedLanguage;
@@ -212,6 +221,17 @@ function setMetaContent(selector, value) {
 	if (element) {
 		element.setAttribute("content", value);
 	}
+}
+
+function updateSeoMetadata(language) {
+	const title = translationTokens.title[language];
+	const description = translationTokens.description[language];
+	document.title = title;
+	setMetaContent('meta[name="description"]', description);
+	setMetaContent('meta[property="og:title"]', title);
+	setMetaContent('meta[property="og:description"]', description);
+	setMetaContent('meta[name="twitter:title"]', title);
+	setMetaContent('meta[name="twitter:description"]', description);
 }
 
 function getTranslation(key) {
@@ -461,6 +481,7 @@ function showEmptyPreview() {
 	if (generatorElements.downloadButton) {
 		generatorElements.downloadButton.disabled = true;
 	}
+	updateDownloadButtonVisibility();
 	updateGeneratorStatus("statusEmpty");
 }
 
@@ -519,6 +540,7 @@ function renderPreview() {
 	if (generatorElements.downloadButton) {
 		generatorElements.downloadButton.disabled = false;
 	}
+	updateDownloadButtonVisibility();
 	updateGeneratorStatus("statusLive");
 }
 
@@ -822,7 +844,17 @@ function resetGenerator() {
 function initializeIcons() {
 	if (window.lucide?.createIcons) {
 		window.lucide.createIcons();
+		return true;
 	}
+	return false;
+}
+
+function initializeIconsWhenReady() {
+	if (initializeIcons()) {
+		return;
+	}
+	document.addEventListener("DOMContentLoaded", initializeIcons, { once: true });
+	window.addEventListener("load", initializeIcons, { once: true });
 }
 
 function initializeGenerator() {
@@ -1022,8 +1054,7 @@ function setLanguage(lang) {
 	document.documentElement.dir = isRtl ? "rtl" : "ltr";
 	document.body.dataset.language = normalizedLanguage;
 	updateTextTranslations(normalizedLanguage);
-	document.title = translationTokens.title[normalizedLanguage];
-	setMetaContent('meta[name="description"]', translationTokens.description[normalizedLanguage]);
+	updateSeoMetadata(normalizedLanguage);
 	window.localStorage.setItem(storageKeys.language, normalizedLanguage);
 	updateLanguageButtons(normalizedLanguage);
 	updateThemeLabel(document.documentElement.dataset.theme || getPreferredTheme());
@@ -1031,9 +1062,57 @@ function setLanguage(lang) {
 	queueRender();
 }
 
+function isStandaloneDisplayMode() {
+	return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+}
+
+function updateInstallButton() {
+	if (!generatorElements.installButton) {
+		return;
+	}
+	generatorElements.installButton.hidden = isStandaloneDisplayMode() || !deferredInstallPrompt;
+}
+
+function updateDownloadButtonVisibility() {
+	if (!generatorElements.downloadButton) {
+		return;
+	}
+	const shouldHideDownload = isStandaloneDisplayMode();
+	generatorElements.downloadButton.hidden = shouldHideDownload;
+	generatorElements.downloadButton.disabled = shouldHideDownload || !getCurrentContent();
+}
+
+async function promptInstall() {
+	if (!deferredInstallPrompt) {
+		return;
+	}
+	const installPrompt = deferredInstallPrompt;
+	deferredInstallPrompt = null;
+	updateInstallButton();
+	try {
+		await installPrompt.prompt();
+		await installPrompt.userChoice;
+	} catch {
+		// Ignore prompt failures or dismissals.
+	}
+}
+
 function initializeControls() {
+	generatorElements.installButton = document.querySelector("[data-install-button]");
 	document.querySelectorAll("[data-language-option]").forEach((button) => {
-		button.addEventListener("click", () => setLanguage(button.dataset.languageOption));
+		button.addEventListener("click", () => {
+			const nextLanguage = button.dataset.languageOption;
+			const nextHref = button.dataset.languageHref;
+			if (nextLanguage === document.documentElement.lang) {
+				return;
+			}
+			window.localStorage.setItem(storageKeys.language, nextLanguage);
+			if (nextHref) {
+				window.location.href = nextHref;
+				return;
+			}
+			setLanguage(nextLanguage);
+		});
 	});
 	const themeToggle = document.querySelector("[data-theme-toggle]");
 	if (themeToggle) {
@@ -1041,14 +1120,46 @@ function initializeControls() {
 			setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 		});
 	}
+	if (generatorElements.installButton) {
+		generatorElements.installButton.addEventListener("click", promptInstall);
+	}
+	window.addEventListener("beforeinstallprompt", (event) => {
+		event.preventDefault();
+		deferredInstallPrompt = event;
+		updateInstallButton();
+	});
+	window.addEventListener("appinstalled", () => {
+		deferredInstallPrompt = null;
+		updateInstallButton();
+		updateDownloadButtonVisibility();
+	});
+	window.matchMedia("(display-mode: standalone)").addEventListener("change", () => {
+		updateInstallButton();
+		updateDownloadButtonVisibility();
+	});
+	updateInstallButton();
+	updateDownloadButtonVisibility();
+}
+
+function initializePwa() {
+	const serviceWorkerPath = document.documentElement.dataset.serviceWorker;
+	if (!("serviceWorker" in navigator) || !serviceWorkerPath) {
+		return;
+	}
+	window.addEventListener("load", () => {
+		navigator.serviceWorker.register(serviceWorkerPath).catch(() => {
+			// Ignore registration failures on unsupported contexts such as file:// previews.
+		});
+	});
 }
 
 window.translationTokens = translationTokens;
 window.setLanguage = setLanguage;
 window.setTheme = setTheme;
 
-initializeIcons();
+initializeIconsWhenReady();
 setTheme(getPreferredTheme());
 initializeGenerator();
 setLanguage(getDocumentLanguage());
 initializeControls();
+initializePwa();

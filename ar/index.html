@@ -1,88 +1,88 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-language-route="en" data-service-worker="./service-worker.js">
+<html lang="ar" dir="rtl" data-language-route="ar" data-service-worker="../service-worker.js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free QR Code Generator | Custom PNG QR Codes</title>
-    <meta name="description" content="Create custom QR codes for URLs or text with live preview, style presets, logo support, and high-resolution PNG downloads.">
+    <title>منشئ QR مجاني | تنزيل رموز QR بصيغة PNG</title>
+    <meta name="description" content="أنشئ رموز QR مخصصة للروابط أو النصوص مع معاينة مباشرة وخيارات تصميم وشعار وتنزيل PNG عالي الدقة.">
     <meta name="theme-color" content="#f1f1f3">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="QR Generator">
+    <meta name="apple-mobile-web-app-title" content="منشئ QR">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="QR Generator">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="ar_AR">
-    <meta property="og:title" content="Free QR Code Generator | Custom PNG QR Codes">
-    <meta property="og:description" content="Create custom QR codes for URLs or text with live preview, style presets, logo support, and high-resolution PNG downloads.">
-    <meta property="og:url" content="https://qr.etamid.com/">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:title" content="منشئ QR مجاني | تنزيل رموز QR بصيغة PNG">
+    <meta property="og:description" content="أنشئ رموز QR مخصصة للروابط أو النصوص مع معاينة مباشرة وخيارات تصميم وشعار وتنزيل PNG عالي الدقة.">
+    <meta property="og:url" content="https://qr.etamid.com/ar/">
     <meta property="og:image" content="https://qr.etamid.com/assets/images/screenshot.png">
     <meta property="og:image:width" content="1919">
     <meta property="og:image:height" content="1079">
-    <meta property="og:image:alt" content="QR Generator app interface with a live QR preview.">
+    <meta property="og:image:alt" content="واجهة تطبيق منشئ QR مع معاينة مباشرة للرمز.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free QR Code Generator | Custom PNG QR Codes">
-    <meta name="twitter:description" content="Create custom QR codes for URLs or text with live preview, style presets, logo support, and high-resolution PNG downloads.">
+    <meta name="twitter:title" content="منشئ QR مجاني | تنزيل رموز QR بصيغة PNG">
+    <meta name="twitter:description" content="أنشئ رموز QR مخصصة للروابط أو النصوص مع معاينة مباشرة وخيارات تصميم وشعار وتنزيل PNG عالي الدقة.">
     <meta name="twitter:image" content="https://qr.etamid.com/assets/images/screenshot.png">
-    <link rel="canonical" href="https://qr.etamid.com/">
+    <link rel="canonical" href="https://qr.etamid.com/ar/">
     <link rel="alternate" hreflang="en" href="https://qr.etamid.com/">
     <link rel="alternate" hreflang="ar" href="https://qr.etamid.com/ar/">
     <link rel="alternate" hreflang="x-default" href="https://qr.etamid.com/">
-    <link rel="icon" href="./assets/images/icon.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="./assets/images/icon_white.png" media="(prefers-color-scheme: dark)">
-    <link rel="apple-touch-icon" href="./assets/images/icon.png">
-    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="../assets/images/icon.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../assets/images/icon_white.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" href="../assets/images/icon.png">
+    <link rel="manifest" href="../manifest.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="../assets/styles.css">
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "QR Generator",
-            "url": "https://qr.etamid.com/",
+            "name": "منشئ QR",
+            "url": "https://qr.etamid.com/ar/",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
-            "inLanguage": ["en", "ar"],
+            "inLanguage": ["ar", "en"],
             "offers": {
                 "@type": "Offer",
                 "price": "0",
                 "priceCurrency": "USD"
             },
-            "description": "Create custom QR codes for URLs or text with live preview, style presets, logo support, and high-resolution PNG downloads."
+            "description": "أنشئ رموز QR مخصصة للروابط أو النصوص مع معاينة مباشرة وخيارات تصميم وشعار وتنزيل PNG عالي الدقة."
         }
     </script>
 </head>
-<body data-language="en">
+<body data-language="ar">
     <div class="site-header-wrap">
-        <header class="site-header" aria-label="Primary">
-            <a class="brand" href="./" aria-label="QR Generator home">
-                <img class="brand-logo brand-logo-light" src="./assets/images/full.png" alt="QR Generator logo" width="8192" height="4608">
-                <img class="brand-logo brand-logo-dark" src="./assets/images/white_full.png" alt="QR Generator logo" width="8192" height="4608">
+        <header class="site-header" aria-label="التنقل الرئيسي">
+            <a class="brand" href="./" aria-label="العودة إلى الصفحة الرئيسية لمنشئ QR">
+                <img class="brand-logo brand-logo-light" src="../assets/images/full.png" alt="شعار QR Generator" width="8192" height="4608">
+                <img class="brand-logo brand-logo-dark" src="../assets/images/white_full.png" alt="شعار QR Generator" width="8192" height="4608">
             </a>
             <div class="header-controls">
-                <div class="control-group language-switcher" role="group" aria-label="Language switcher">
-                    <button class="control-button" type="button" data-language-option="en" data-language-href="./">EN</button>
-                    <button class="control-button" type="button" data-language-option="ar" data-language-href="./ar/">AR</button>
+                <div class="control-group language-switcher" role="group" aria-label="مبدل اللغة">
+                    <button class="control-button" type="button" data-language-option="en" data-language-href="../">EN</button>
+                    <button class="control-button" type="button" data-language-option="ar" data-language-href="./">AR</button>
                 </div>
                     <button class="control-button" type="button" data-install-button hidden>
                         <i class="button-icon" data-lucide="download"></i>
-                        <span data-translation-key="installApp">Install app</span>
+                        <span data-translation-key="installApp">تثبيت التطبيق</span>
                     </button>
                 <button
                     class="control-button theme-toggle"
                     type="button"
                     data-theme-toggle
                     data-translation-aria-label="themeToggle"
-                    aria-label="Toggle color theme"
+                    aria-label="تبديل مظهر الألوان"
                 >
                     <span class="theme-toggle-track" aria-hidden="true">
                         <span class="theme-toggle-thumb"></span>
                     </span>
-                    <span class="theme-toggle-label" data-theme-label>Light</span>
+                    <span class="theme-toggle-label" data-theme-label>فاتح</span>
                 </button>
             </div>
         </header>
@@ -90,31 +90,31 @@
             <section class="generator-layout" aria-labelledby="generator-heading">
                 <article class="generator-panel generator-panel-form">
                     <div class="panel-copy">
-                        <p class="panel-kicker" data-translation-key="panelKicker">Live QR generator</p>
-                        <h1 id="generator-heading" class="panel-title" data-translation-key="panelTitle">Create a QR code in seconds</h1>
-                        <p class="panel-description" data-translation-key="panelDescription">Paste a link, tweak the essentials, and download a sharp PNG instantly.</p>
+                        <p class="panel-kicker" data-translation-key="panelKicker">مولد QR مباشر</p>
+                        <h1 id="generator-heading" class="panel-title" data-translation-key="panelTitle">أنشئ رمز QR خلال ثوانٍ</h1>
+                        <p class="panel-description" data-translation-key="panelDescription">ألصق الرابط، عدّل الأساسيات، ثم نزّل ملف PNG واضحًا فورًا.</p>
                     </div>
 
                     <form class="generator-form" data-generator-form>
                         <div class="form-section">
                             <div class="section-heading-row">
-                                <p class="field-label" data-translation-key="contentTypeLabel">Content type</p>
-                                <p class="field-meta" data-translation-key="contentTypeMeta">Live input</p>
+                                <p class="field-label" data-translation-key="contentTypeLabel">نوع المحتوى</p>
+                                <p class="field-meta" data-translation-key="contentTypeMeta">إدخال مباشر</p>
                             </div>
-                            <div class="control-group segmented-group" role="group" aria-label="Content type">
+                            <div class="control-group segmented-group" role="group" aria-label="نوع المحتوى">
                                 <button class="control-button segmented-button" type="button" data-content-type-option="url">
                                     <i class="button-icon" data-lucide="globe"></i>
-                                    <span data-translation-key="contentTypeUrl">URL</span>
+                                    <span data-translation-key="contentTypeUrl">رابط</span>
                                 </button>
                                 <button class="control-button segmented-button" type="button" data-content-type-option="text">
                                     <i class="button-icon" data-lucide="text"></i>
-                                    <span data-translation-key="contentTypeText">Text</span>
+                                    <span data-translation-key="contentTypeText">نص</span>
                                 </button>
                             </div>
 
                             <div class="content-field-stack">
                                 <div class="content-field-group" data-content-field="url">
-                                    <label class="field-label" for="qr-url" data-translation-key="urlFieldLabel">URL</label>
+                                    <label class="field-label" for="qr-url" data-translation-key="urlFieldLabel">الرابط</label>
                                     <input
                                         id="qr-url"
                                         class="text-input"
@@ -130,31 +130,31 @@
                                 </div>
 
                                 <div class="content-field-group" data-content-field="text" hidden>
-                                    <label class="field-label" for="qr-text" data-translation-key="textFieldLabel">Text</label>
+                                    <label class="field-label" for="qr-text" data-translation-key="textFieldLabel">النص</label>
                                     <textarea
                                         id="qr-text"
                                         class="text-area"
                                         rows="5"
-                                        placeholder="Write anything you want to encode"
+                                        placeholder="اكتب أي شيء تريد تحويله إلى رمز"
                                         data-translation-placeholder="textPlaceholder"
                                         data-qr-text-input
                                     ></textarea>
                                     <div class="field-help-row">
-                                        <p class="field-help" data-translation-key="textCapacityHelp">Text is capped automatically to keep the QR code scannable.</p>
+                                        <p class="field-help" data-translation-key="textCapacityHelp">يتم تحديد طول النص تلقائيًا للحفاظ على قابلية مسح رمز QR.</p>
                                         <p class="field-meta field-counter" data-text-capacity-counter>0 / 1273 bytes</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <p class="field-help" data-translation-key="contentHelp">Changes appear automatically. You do not need to click apply.</p>
+                            <p class="field-help" data-translation-key="contentHelp">تظهر التغييرات تلقائيًا. لا تحتاج إلى الضغط على زر تطبيق.</p>
                         </div>
 
                         <div class="form-section">
                             <div class="section-heading-row">
-                                <p class="field-label" data-translation-key="downloadSizeLabel">Download size</p>
-                                <p class="field-meta" data-translation-key="downloadSizeMeta">PNG output</p>
+                                <p class="field-label" data-translation-key="downloadSizeLabel">حجم التنزيل</p>
+                                <p class="field-meta" data-translation-key="downloadSizeMeta">مخرج PNG</p>
                             </div>
-                            <div class="control-group segmented-group" role="group" aria-label="Download size">
+                            <div class="control-group segmented-group" role="group" aria-label="حجم التنزيل">
                                 <button class="control-button segmented-button" type="button" data-size-option="512">512</button>
                                 <button class="control-button segmented-button" type="button" data-size-option="1024">1024</button>
                                 <button class="control-button segmented-button" type="button" data-size-option="2048">2048</button>
@@ -167,7 +167,7 @@
                             <summary class="advanced-summary">
                                 <span class="summary-content">
                                     <i class="button-icon" data-lucide="palette"></i>
-                                    <span data-translation-key="styleToggle">Styles</span>
+                                    <span data-translation-key="styleToggle">الأنماط</span>
                                 </span>
                                 <span class="summary-toggle" aria-hidden="true">
                                     <i class="summary-toggle-icon summary-toggle-icon-plus" data-lucide="plus"></i>
@@ -176,47 +176,47 @@
                             </summary>
                             <div class="advanced-grid compact-grid style-grid">
                                 <div class="advanced-field advanced-field-wide">
-                                    <span class="field-label" data-translation-key="styleLabel">Style preset</span>
-                                    <div class="control-group segmented-group" role="group" aria-label="Style preset">
-                                        <button class="control-button segmented-button" type="button" data-style-option="card" data-translation-key="styleCard">Card</button>
-                                        <button class="control-button segmented-button" type="button" data-style-option="studio" data-translation-key="styleStudio">Studio</button>
-                                        <button class="control-button segmented-button" type="button" data-style-option="stamp" data-translation-key="styleStamp">Stamp</button>
-                                        <button class="control-button segmented-button" type="button" data-style-option="ink" data-translation-key="styleInk">Ink</button>
-                                        <button class="control-button segmented-button" type="button" data-style-option="transparent" data-translation-key="styleTransparent">Transparent</button>
+                                    <span class="field-label" data-translation-key="styleLabel">نمط الإخراج</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="نمط الإخراج">
+                                        <button class="control-button segmented-button" type="button" data-style-option="card" data-translation-key="styleCard">بطاقة</button>
+                                        <button class="control-button segmented-button" type="button" data-style-option="studio" data-translation-key="styleStudio">استوديو</button>
+                                        <button class="control-button segmented-button" type="button" data-style-option="stamp" data-translation-key="styleStamp">ختم</button>
+                                        <button class="control-button segmented-button" type="button" data-style-option="ink" data-translation-key="styleInk">حبرية</button>
+                                        <button class="control-button segmented-button" type="button" data-style-option="transparent" data-translation-key="styleTransparent">شفاف</button>
                                     </div>
                                 </div>
                                 <div class="advanced-field advanced-field-wide">
-                                    <span class="field-label" data-translation-key="qrPatternLabel">QR pattern</span>
-                                    <div class="control-group segmented-group" role="group" aria-label="QR pattern">
-                                        <button class="control-button segmented-button" type="button" data-dot-style-option="square" data-translation-key="dotStyleSquare">Square</button>
-                                        <button class="control-button segmented-button" type="button" data-dot-style-option="rounded" data-translation-key="dotStyleRounded">Rounded</button>
-                                        <button class="control-button segmented-button" type="button" data-dot-style-option="classy" data-translation-key="dotStyleClassy">Classy</button>
-                                        <button class="control-button segmented-button" type="button" data-dot-style-option="extra-rounded" data-translation-key="dotStyleExtraRounded">Extra round</button>
+                                    <span class="field-label" data-translation-key="qrPatternLabel">نمط الرمز</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="نمط الرمز">
+                                        <button class="control-button segmented-button" type="button" data-dot-style-option="square" data-translation-key="dotStyleSquare">مربع</button>
+                                        <button class="control-button segmented-button" type="button" data-dot-style-option="rounded" data-translation-key="dotStyleRounded">دائري</button>
+                                        <button class="control-button segmented-button" type="button" data-dot-style-option="classy" data-translation-key="dotStyleClassy">أنيق</button>
+                                        <button class="control-button segmented-button" type="button" data-dot-style-option="extra-rounded" data-translation-key="dotStyleExtraRounded">فائق الاستدارة</button>
                                     </div>
                                 </div>
                                 <div class="advanced-field">
-                                    <span class="field-label" data-translation-key="eyeFrameLabel">Eye frame</span>
-                                    <div class="control-group segmented-group" role="group" aria-label="Eye frame">
-                                        <button class="control-button segmented-button" type="button" data-corner-square-style-option="square" data-translation-key="eyeFrameSquare">Square</button>
-                                        <button class="control-button segmented-button" type="button" data-corner-square-style-option="extra-rounded" data-translation-key="eyeFrameRounded">Rounded</button>
+                                    <span class="field-label" data-translation-key="eyeFrameLabel">إطار العيون</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="إطار العيون">
+                                        <button class="control-button segmented-button" type="button" data-corner-square-style-option="square" data-translation-key="eyeFrameSquare">مربع</button>
+                                        <button class="control-button segmented-button" type="button" data-corner-square-style-option="extra-rounded" data-translation-key="eyeFrameRounded">دائري</button>
                                     </div>
                                 </div>
                                 <div class="advanced-field">
-                                    <span class="field-label" data-translation-key="eyeCenterLabel">Eye center</span>
-                                    <div class="control-group segmented-group" role="group" aria-label="Eye center">
-                                        <button class="control-button segmented-button" type="button" data-corner-dot-style-option="square" data-translation-key="eyeCenterSquare">Square</button>
-                                        <button class="control-button segmented-button" type="button" data-corner-dot-style-option="dot" data-translation-key="eyeCenterDot">Dot</button>
+                                    <span class="field-label" data-translation-key="eyeCenterLabel">مركز العيون</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="مركز العيون">
+                                        <button class="control-button segmented-button" type="button" data-corner-dot-style-option="square" data-translation-key="eyeCenterSquare">مربع</button>
+                                        <button class="control-button segmented-button" type="button" data-corner-dot-style-option="dot" data-translation-key="eyeCenterDot">نقطة</button>
                                     </div>
                                 </div>
                                 <div class="advanced-field">
-                                    <label class="field-label" for="qr-frame-color" data-translation-key="frameColorLabel">Frame fill</label>
+                                    <label class="field-label" for="qr-frame-color" data-translation-key="frameColorLabel">لون الإطار</label>
                                     <div class="color-input-wrap">
                                         <input id="qr-frame-color" class="color-input" type="color" value="#ffffff" data-qr-frame-color>
                                         <span class="color-value" data-frame-color-value>#FFFFFF</span>
                                     </div>
                                 </div>
                                 <div class="advanced-field">
-                                    <label class="field-label" for="qr-frame-text-color" data-translation-key="frameTextColorLabel">Frame text</label>
+                                    <label class="field-label" for="qr-frame-text-color" data-translation-key="frameTextColorLabel">لون النص</label>
                                     <div class="color-input-wrap">
                                         <input id="qr-frame-text-color" class="color-input" type="color" value="#171411" data-qr-frame-text-color>
                                         <span class="color-value" data-frame-text-color-value>#171411</span>
@@ -229,7 +229,7 @@
                             <summary class="advanced-summary">
                                 <span class="summary-content">
                                     <i class="button-icon" data-lucide="scan-text"></i>
-                                    <span data-translation-key="detailsToggle">Optional details</span>
+                                    <span data-translation-key="detailsToggle">تفاصيل اختيارية</span>
                                 </span>
                                 <span class="summary-toggle" aria-hidden="true">
                                     <i class="summary-toggle-icon summary-toggle-icon-plus" data-lucide="plus"></i>
@@ -238,25 +238,25 @@
                             </summary>
                             <div class="advanced-grid">
                                 <div class="advanced-field advanced-field-wide">
-                                    <label class="field-label" for="qr-label" data-translation-key="labelFieldLabel">Label</label>
+                                    <label class="field-label" for="qr-label" data-translation-key="labelFieldLabel">العنوان</label>
                                     <input
                                         id="qr-label"
                                         class="text-input"
                                         type="text"
                                         maxlength="60"
-                                        placeholder="Etamid"
+                                        placeholder="إعتمد"
                                         data-translation-placeholder="labelPlaceholder"
                                         data-qr-label-input
                                     >
                                 </div>
                                 <div class="advanced-field advanced-field-wide">
-                                    <label class="field-label" for="qr-description" data-translation-key="descriptionFieldLabel">Description</label>
+                                    <label class="field-label" for="qr-description" data-translation-key="descriptionFieldLabel">الوصف</label>
                                     <textarea
                                         id="qr-description"
                                         class="text-area text-area-small"
                                         rows="3"
                                         maxlength="140"
-                                        placeholder="Share this code with anyone instantly"
+                                        placeholder="قم بزيارة موقعنا لمزيد من المشاريع الرائعة."
                                         data-translation-placeholder="descriptionPlaceholder"
                                         data-qr-description-input
                                     ></textarea>
@@ -268,7 +268,7 @@
                             <summary class="advanced-summary">
                                 <span class="summary-content">
                                     <i class="button-icon" data-lucide="image-up"></i>
-                                    <span data-translation-key="logoFieldLabel">Logo</span>
+                                    <span data-translation-key="logoFieldLabel">الشعار</span>
                                 </span>
                                 <span class="summary-toggle" aria-hidden="true">
                                     <i class="summary-toggle-icon summary-toggle-icon-plus" data-lucide="plus"></i>
@@ -277,33 +277,33 @@
                             </summary>
                             <div class="advanced-grid">
                                 <div class="advanced-field advanced-field-wide">
-                                    <span class="field-label" data-translation-key="logoFieldLabel">Logo</span>
+                                    <span class="field-label" data-translation-key="logoFieldLabel">الشعار</span>
                                     <div class="logo-upload-row">
                                         <label class="upload-button" for="qr-logo">
                                             <i class="button-icon" data-lucide="image-plus"></i>
-                                            <span data-translation-key="logoUploadButton">Upload logo</span>
+                                            <span data-translation-key="logoUploadButton">رفع شعار</span>
                                         </label>
                                         <input id="qr-logo" class="file-input" type="file" accept=".png,.jpg,.jpeg,.webp,.svg" data-qr-logo-input>
                                         <button class="control-button text-button" type="button" data-clear-logo-button>
                                             <i class="button-icon" data-lucide="trash-2"></i>
-                                            <span data-translation-key="logoClearButton">Remove</span>
+                                            <span data-translation-key="logoClearButton">إزالة</span>
                                         </button>
                                     </div>
-                                    <p class="field-help" data-logo-file-name data-translation-key="logoHelp">Optional. A small centered logo usually still scans well.</p>
+                                    <p class="field-help" data-logo-file-name data-translation-key="logoHelp">اختياري. الشعار الصغير في الوسط عادةً يظل قابلاً للمسح.</p>
                                 </div>
                                 <div class="advanced-field advanced-field-wide logo-options" data-logo-options hidden>
                                     <div class="logo-options-card">
-                                        <p class="field-label" data-translation-key="logoAppearanceLabel">Logo appearance</p>
+                                        <p class="field-label" data-translation-key="logoAppearanceLabel">مظهر الشعار</p>
                                         <div class="advanced-grid compact-grid">
                                             <div class="advanced-field">
-                                                <label class="field-label" for="qr-logo-badge-color" data-translation-key="logoBadgeColorLabel">Logo plate</label>
+                                                <label class="field-label" for="qr-logo-badge-color" data-translation-key="logoBadgeColorLabel">خلفية الشعار</label>
                                                 <div class="color-input-wrap">
                                                     <input id="qr-logo-badge-color" class="color-input" type="color" value="#ffffff" data-qr-logo-badge-color>
                                                     <span class="color-value" data-logo-badge-color-value>#FFFFFF</span>
                                                 </div>
                                             </div>
                                             <div class="advanced-field">
-                                                <label class="field-label" for="qr-logo-scale" data-translation-key="logoScaleLabel">Logo size</label>
+                                                <label class="field-label" for="qr-logo-scale" data-translation-key="logoScaleLabel">حجم الشعار</label>
                                                 <div class="range-input-wrap">
                                                     <input id="qr-logo-scale" class="range-input" type="range" min="16" max="30" step="1" value="22" data-qr-logo-scale>
                                                     <span class="color-value" data-logo-scale-value>22%</span>
@@ -319,7 +319,7 @@
                             <summary class="advanced-summary">
                                 <span class="summary-content">
                                     <i class="button-icon" data-lucide="settings-2"></i>
-                                    <span data-translation-key="advancedToggle">Advanced</span>
+                                    <span data-translation-key="advancedToggle">متقدم</span>
                                 </span>
                                 <span class="summary-toggle" aria-hidden="true">
                                     <i class="summary-toggle-icon summary-toggle-icon-plus" data-lucide="plus"></i>
@@ -328,22 +328,22 @@
                             </summary>
                             <div class="advanced-grid">
                                 <div class="advanced-field">
-                                    <label class="field-label" for="qr-dark-color" data-translation-key="foregroundLabel">Foreground</label>
+                                    <label class="field-label" for="qr-dark-color" data-translation-key="foregroundLabel">لون الرمز</label>
                                     <div class="color-input-wrap">
                                         <input id="qr-dark-color" class="color-input" type="color" value="#111111" data-qr-dark-color>
                                         <span class="color-value" data-dark-color-value>#111111</span>
                                     </div>
                                 </div>
                                 <div class="advanced-field">
-                                    <label class="field-label" for="qr-light-color" data-translation-key="backgroundLabel">Background</label>
+                                    <label class="field-label" for="qr-light-color" data-translation-key="backgroundLabel">الخلفية</label>
                                     <div class="color-input-wrap">
                                         <input id="qr-light-color" class="color-input" type="color" value="#ffffff" data-qr-light-color>
                                         <span class="color-value" data-light-color-value>#ffffff</span>
                                     </div>
                                 </div>
                                 <div class="advanced-field advanced-field-wide">
-                                    <span class="field-label" data-translation-key="errorCorrectionLabel">Error correction</span>
-                                    <div class="control-group segmented-group" role="group" aria-label="Error correction">
+                                    <span class="field-label" data-translation-key="errorCorrectionLabel">تصحيح الأخطاء</span>
+                                    <div class="control-group segmented-group" role="group" aria-label="تصحيح الأخطاء">
                                         <button class="control-button segmented-button" type="button" data-error-level="L">L</button>
                                         <button class="control-button segmented-button" type="button" data-error-level="M">M</button>
                                         <button class="control-button segmented-button" type="button" data-error-level="Q">Q</button>
@@ -357,7 +357,7 @@
 
                 <article class="generator-panel generator-panel-preview">
                     <div class="preview-header">
-                        <p class="panel-kicker" data-translation-key="previewKicker">Preview</p>
+                        <p class="panel-kicker" data-translation-key="previewKicker">المعاينة</p>
                         <p class="preview-size" data-preview-size-label>1024 px PNG</p>
                     </div>
                     <div class="preview-card">
@@ -376,21 +376,21 @@
                             </div>
                         </div>
                         <div class="preview-copy">
-                            <h2 class="preview-title" data-translation-key="previewTitle">Scannable and ready</h2>
-                            <p class="preview-description" data-translation-key="previewDescription">The code updates live as you type and keeps the output crisp for download.</p>
+                            <h2 class="preview-title" data-translation-key="previewTitle">جاهز للمسح والاستخدام</h2>
+                            <p class="preview-description" data-translation-key="previewDescription">يتحدث الرمز مباشرة أثناء الكتابة ويحافظ على جودة عالية عند التنزيل.</p>
                         </div>
                         <div class="action-row preview-action-row">
                             <div class="preview-action-buttons">
                                 <button class="secondary-button" type="button" data-reset-button>
                                     <i class="button-icon" data-lucide="rotate-ccw"></i>
-                                    <span data-translation-key="resetButton">Reset</span>
+                                    <span data-translation-key="resetButton">إعادة الضبط</span>
                                 </button>
                                 <button class="download-button" type="button" data-download-button>
                                     <i class="button-icon" data-lucide="download"></i>
-                                    <span data-translation-key="downloadButton">Download PNG</span>
+                                    <span data-translation-key="downloadButton">تنزيل PNG</span>
                                 </button>
                             </div>
-                            <p class="status-text" data-generator-status data-translation-key="statusReady">Ready</p>
+                            <p class="status-text" data-generator-status data-translation-key="statusReady">جاهز</p>
                         </div>
                     </div>
                 </article>
@@ -399,14 +399,14 @@
 
         <section class="site-outro" aria-labelledby="visit-site-heading">
             <div class="thanks-card">
-                <p class="panel-kicker" data-translation-key="thanksCardKicker">Thanks for using it</p>
+                <p class="panel-kicker" data-translation-key="thanksCardKicker">شكرًا لتجربتكم منشئ رموز QR الخاص بنا!</p>
                 <div class="thanks-card-content">
                     <div class="thanks-copy">
-                        <h2 id="visit-site-heading" class="thanks-title" data-translation-key="thanksCardTitle">Need more projects like this?</h2>
-                        <p class="thanks-description" data-translation-key="thanksCardDescription">We build digital products, tools, and experiences at Etamid. Visit our website to see more.</p>
+                        <h2 id="visit-site-heading" class="thanks-title" data-translation-key="thanksCardTitle">تبحث عن مشاريع إضافية؟</h2>
+                        <p class="thanks-description" data-translation-key="thanksCardDescription">نبني أدوات تسهل الحياة للمبدعين والفرق. قم بزيارة موقعنا للإطلاع على المزيد.</p>
                     </div>
                     <a class="visit-site-link" href="https://etamid.com/" target="_blank" rel="noopener noreferrer">
-                        <span data-translation-key="thanksCardButton">Visit etamid.com</span>
+                        <span data-translation-key="thanksCardButton">قم بزيارة موقعنا</span>
                         <i class="button-icon" data-lucide="arrow-up-right"></i>
                     </a>
                 </div>
@@ -415,9 +415,9 @@
     </div>
 
     <noscript>
-        <p>This app works best with JavaScript enabled.</p>
+        <p>يعمل هذا التطبيق بشكل أفضل عند تفعيل JavaScript.</p>
     </noscript>
-    <script src="./assets/qr-code-styling.js"></script>
-    <script src="./assets/main.js"></script>
+    <script src="../assets/qr-code-styling.js"></script>
+    <script src="../assets/main.js"></script>
 </body>
 </html>

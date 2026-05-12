@@ -1,6 +1,6 @@
 # QR Generator
 
-A polished static QR code generator with live preview, bilingual English and Arabic support, theme switching, style presets, logo embedding, and high-resolution PNG export.
+A polished static QR code generator with live preview, bilingual English and Arabic support, theme switching, style presets, logo embedding, high-resolution PNG export, SEO metadata, and installable PWA support.
 
 ![QR Generator screenshot](./assets/images/screenshot.png)
 
@@ -10,11 +10,14 @@ This project is a lightweight front-end app built with plain HTML, CSS, and Java
 
 The generator updates instantly as the user types, keeps advanced options tucked away until needed, and supports both desktop and mobile layouts.
 
+The project now ships with separate crawlable English and Arabic entry pages for stronger multilingual SEO, along with sitemap, robots, manifest, and service worker files for deployment.
+
 ## Features
 
 - Live QR code preview with no apply button
 - URL and plain text modes
 - English and Arabic interface with RTL support
+- Dedicated English and Arabic routes for SEO: `/` and `/ar/`
 - Light and dark theme toggle
 - Download PNG sizes from `512` up to `8192`
 - Style presets: `Card`, `Studio`, `Stamp`, `Ink`, and `Transparent`
@@ -23,13 +26,20 @@ The generator updates instantly as the user types, keeps advanced options tucked
 - Optional centered logo with size and badge controls
 - Solid foreground and background color controls
 - Reset action for returning to the default state
+- Open Graph, Twitter, canonical, and `hreflang` metadata
+- `robots.txt` and `sitemap.xml`
+- Installable PWA manifest and offline caching via service worker
 
 ## Stack
 
 - `index.html` for the app structure
+- `ar/index.html` for the Arabic entry page
 - `assets/styles.css` for the tokenized design system and responsive layout
 - `assets/main.js` for translations, UI state, preview rendering, and export logic
 - `assets/qr-code-styling.js` for QR rendering and image export
+- `manifest.webmanifest` for installable app metadata
+- `service-worker.js` for offline asset caching
+- `robots.txt` and `sitemap.xml` for search engine discovery
 - `lucide` from CDN for icons
 - Google Fonts for `Space Grotesk` and `Cairo`
 
@@ -64,8 +74,14 @@ Then open `http://localhost:8000` in your browser.
 ```text
 .
 |-- index.html
+|-- ar/
+|   `-- index.html
 |-- README.md
 |-- LICENSE
+|-- manifest.webmanifest
+|-- service-worker.js
+|-- robots.txt
+|-- sitemap.xml
 `-- assets/
 	|-- main.js
 	|-- styles.css
@@ -78,3 +94,4 @@ Then open `http://localhost:8000` in your browser.
 - The app is fully static and suitable for simple hosting environments.
 - Fonts, icons, and some assets are loaded from external CDNs.
 - The QR rendering and export path are aligned so preview and downloaded output stay visually consistent.
+- The production metadata in this repo is configured for `https://qr.etamid.com/`.
