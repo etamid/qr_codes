@@ -1074,7 +1074,9 @@ function updateInstallButton() {
 	if (!generatorElements.installButton) {
 		return;
 	}
-	generatorElements.installButton.hidden = isStandaloneDisplayMode();
+	const shouldDisableInstall = isStandaloneDisplayMode();
+	generatorElements.installButton.hidden = shouldDisableInstall;
+	generatorElements.installButton.disabled = shouldDisableInstall;
 	generatorElements.installButton.dataset.active = String(Boolean(deferredInstallPrompt));
 }
 
@@ -1082,9 +1084,8 @@ function updateDownloadButtonVisibility() {
 	if (!generatorElements.downloadButton) {
 		return;
 	}
-	const shouldHideDownload = isStandaloneDisplayMode();
-	generatorElements.downloadButton.hidden = shouldHideDownload;
-	generatorElements.downloadButton.disabled = shouldHideDownload || !getCurrentContent();
+	generatorElements.downloadButton.hidden = false;
+	generatorElements.downloadButton.disabled = !getCurrentContent();
 }
 
 async function promptInstall() {
