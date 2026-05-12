@@ -36,6 +36,11 @@
       "sizes": "1919x1079",
       "type": "image/png",
       "form_factor": "wide"
+    },
+    {
+      "src": "/assets/images/screenshot.png",
+      "sizes": "1919x1079",
+      "type": "image/png"
     }
   ]
 }
