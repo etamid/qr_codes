@@ -251,10 +251,68 @@ html[data-theme="dark"] .site-header-wrap::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
+	:root {
+		--card-surface: #f7f7f8;
+		--card-blur: 0px;
+		--card-saturate: 100%;
+		--glass-shadow: 0 10px 22px rgba(144, 157, 181, 0.12);
+		--glass-shadow-soft: none;
+		--switcher-surface: #ffffff;
+		--switcher-surface-hover: #f7f7f8;
+		--input-surface: #ffffff;
+		--pill-inactive-bg: #ffffff;
+		--pill-hover-bg: #f7f7f8;
+	}
+
+	html[data-theme="dark"] {
+		--card-surface: #0a1f28;
+		--glass-shadow: none;
+		--switcher-surface: #112338;
+		--switcher-surface-hover: #182e4f;
+		--input-surface: #112338;
+		--pill-inactive-bg: #112338;
+		--pill-hover-bg: #182e4f;
+	}
+
 	body::before,
 	body::after,
 	.site-header-wrap::before {
 		animation: none;
+		display: none;
+	}
+
+	.site-main,
+	.thanks-card,
+	.visit-site-link,
+	.text-input,
+	.text-area,
+	.form-section,
+	.advanced-panel,
+	.preview-card,
+	.color-input-wrap,
+	.range-input-wrap,
+	.logo-options-card,
+	.upload-button,
+	.text-button,
+	.secondary-button,
+	.control-group {
+		-webkit-backdrop-filter: none !important;
+		backdrop-filter: none !important;
+	}
+
+	.preview-output-frame,
+	.qr-canvas,
+	.qr-logo-badge {
+		box-shadow: none !important;
+	}
+
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
 	}
 }
 
@@ -853,6 +911,7 @@ html[data-theme="dark"] .logo-options-card {
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 1.5rem;
+	min-width: 0;
 	height: auto;
 	padding: 1.5rem;
 	border-radius: 1.75rem;
@@ -861,6 +920,8 @@ html[data-theme="dark"] .logo-options-card {
 .preview-stage {
 	display: grid;
 	place-items: center;
+	width: 100%;
+	min-width: 0;
 	min-height: 0;
 	padding: 1.5rem;
 	border: 1px dashed var(--border-strong);
@@ -932,6 +993,8 @@ html[data-theme="dark"] .preview-output-frame[data-style="transparent"] {
 	display: grid;
 	place-items: center;
 	flex: 1 1 auto;
+	width: 100%;
+	min-width: 0;
 	min-height: 0;
 }
 
@@ -939,6 +1002,7 @@ html[data-theme="dark"] .preview-output-frame[data-style="transparent"] {
 	display: grid;
 	place-items: center;
 	width: 100%;
+	min-width: 0;
 	max-width: 100%;
 	aspect-ratio: 1;
 	padding: var(--preview-qr-padding, 1rem);
@@ -961,10 +1025,12 @@ html[data-theme="dark"] .qr-canvas {
 .qr-canvas img,
 .qr-canvas svg {
 	display: block;
+	width: auto;
+	height: auto;
 	max-width: 100%;
 	max-height: 100%;
-	height: auto;
-	border-radius: 0.8rem;
+	object-fit: contain;
+	border-radius: 0;
 }
 
 .qr-logo-badge {
@@ -1197,12 +1263,63 @@ noscript p {
 		--header-gutter: 0.5rem;
 		--header-padding: 0.875rem;
 		--brand-width: clamp(8.5rem, 48vw, 12rem);
+		--card-surface: #f7f7f8;
+		--card-blur: 0px;
+		--card-saturate: 100%;
+		--glass-shadow: 0 10px 22px rgba(144, 157, 181, 0.12);
+		--glass-shadow-soft: none;
+		--switcher-surface: #ffffff;
+		--switcher-surface-hover: #f7f7f8;
+		--input-surface: #ffffff;
+		--pill-inactive-bg: #ffffff;
+		--pill-hover-bg: #f7f7f8;
+	}
+
+	html[data-theme="dark"] {
+		--card-surface: #0a1f28;
+		--glass-shadow: none;
+		--switcher-surface: #112338;
+		--switcher-surface-hover: #182e4f;
+		--input-surface: #112338;
+		--pill-inactive-bg: #112338;
+		--pill-hover-bg: #182e4f;
+	}
+
+	body::before,
+	body::after,
+	.site-header-wrap::before {
+		display: none;
+	}
+
+	.site-main,
+	.thanks-card,
+	.visit-site-link,
+	.text-input,
+	.text-area,
+	.form-section,
+	.advanced-panel,
+	.preview-card,
+	.color-input-wrap,
+	.range-input-wrap,
+	.logo-options-card,
+	.upload-button,
+	.text-button,
+	.secondary-button,
+	.control-group {
+		-webkit-backdrop-filter: none !important;
+		backdrop-filter: none !important;
+	}
+
+	.preview-output-frame,
+	.qr-canvas,
+	.qr-logo-badge {
+		box-shadow: none !important;
 	}
 
 	.generator-layout {
 		grid-template-columns: 1fr;
 		gap: 1rem;
-		padding: 1rem;
+		padding: 0.75rem;
 	}
 
 	.thanks-card-content {
@@ -1274,11 +1391,31 @@ noscript p {
 		width: 100%;
 	}
 
+	.preview-card {
+		padding: 0.75rem;
+	}
+
 	.preview-stage {
-		min-height: 18rem;
+		min-height: 0;
+		padding: 0;
 	}
 
 	.preview-output-frame {
+		align-items: center;
+		aspect-ratio: auto;
+		width: 100%;
+		--preview-frame-padding: clamp(0.7rem, 3vw, 1rem);
+	}
+
+	.preview-qr-wrap {
+		flex: 0 0 auto;
+	}
+
+	.qr-canvas {
+		width: min(100%, 320px);
+	}
+
+	.preview-output-frame[data-style="transparent"] {
 		width: 100%;
 	}
 
