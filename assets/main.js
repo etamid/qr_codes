@@ -58,6 +58,10 @@ const translationTokens = {
 	logoBadgeColorLabel: { en: "Logo plate", ar: "خلفية الشعار" },
 	logoScaleLabel: { en: "Logo size", ar: "حجم الشعار" },
 	installApp: { en: "Install app", ar: "تثبيت التطبيق" },
+	installHelp: {
+		en: "To install this app, use your browser menu and choose Install app or Add to home screen. Installation is available on HTTPS or localhost.",
+		ar: "لتثبيت هذا التطبيق، استخدم قائمة المتصفح واختر تثبيت التطبيق أو الإضافة إلى الشاشة الرئيسية. التثبيت متاح عبر HTTPS أو localhost."
+	},
 	advancedToggle: { en: "Advanced", ar: "متقدم" },
 	foregroundLabel: { en: "Foreground", ar: "لون الرمز" },
 	backgroundLabel: { en: "Background", ar: "الخلفية" },
@@ -1070,7 +1074,8 @@ function updateInstallButton() {
 	if (!generatorElements.installButton) {
 		return;
 	}
-	generatorElements.installButton.hidden = isStandaloneDisplayMode() || !deferredInstallPrompt;
+	generatorElements.installButton.hidden = isStandaloneDisplayMode();
+	generatorElements.installButton.dataset.active = String(Boolean(deferredInstallPrompt));
 }
 
 function updateDownloadButtonVisibility() {
@@ -1084,16 +1089,21 @@ function updateDownloadButtonVisibility() {
 
 async function promptInstall() {
 	if (!deferredInstallPrompt) {
+		window.alert(getTranslation("installHelp"));
 		return;
 	}
 	const installPrompt = deferredInstallPrompt;
 	deferredInstallPrompt = null;
-	updateInstallButton();
 	try {
-		await installPrompt.prompt();
-		await installPrompt.userChoice;
+		const promptResult = await installPrompt.prompt();
+		const choiceResult = await (installPrompt.userChoice || Promise.resolve(promptResult));
+		if (choiceResult?.outcome && choiceResult.outcome !== "accepted") {
+			window.alert(getTranslation("installHelp"));
+		}
 	} catch {
-		// Ignore prompt failures or dismissals.
+		window.alert(getTranslation("installHelp"));
+	} finally {
+		updateInstallButton();
 	}
 }
 
