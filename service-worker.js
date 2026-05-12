@@ -1,4 +1,4 @@
-const CACHE_NAME = "qr-generator-v1";
+const CACHE_NAME = "qr-generator-v2";
 const APP_ASSETS = [
   "/",
   "/index.html",
@@ -7,6 +7,8 @@ const APP_ASSETS = [
   "/assets/styles.css",
   "/assets/main.js",
   "/assets/qr-code-styling.js",
+  "/assets/images/icon-192.png",
+  "/assets/images/icon-512.png",
   "/assets/images/icon.png",
   "/assets/images/icon_white.png",
   "/assets/images/full.png",
